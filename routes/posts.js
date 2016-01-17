@@ -99,7 +99,7 @@ router.put('/:id/edit', function(req, res) {
       if(err) {
         res.send("There was a problem updatin the information:" + err);
       } else {
-        res.json(blob);
+        res.json(post);
       }
     });
   })
