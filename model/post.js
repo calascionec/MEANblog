@@ -12,4 +12,4 @@ var postSchema = new mongoose.Schema({
   }
 })
 
-mongoose.model('post', postSchema)
+mongoose.model('post', postSchema);

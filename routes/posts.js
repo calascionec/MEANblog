@@ -85,4 +85,43 @@ router.route('/:id')
       })
     });
 
+router.put('/:id/edit', function(req, res) {
+  var title = req.body.title;
+  var text = req.body.text;
+
+  //find the post by id
+  mongoose.model('post').findById(req.id, function(err, post) {
+    //update the post
+    post.update({
+      title: title,
+      text: text
+    }, function(err, postID) {
+      if(err) {
+        res.send("There was a problem updatin the information:" + err);
+      } else {
+        res.json(blob);
+      }
+    });
+  })
+})
+
+//delete a post by id
+router.delete('/:id/edit', function(req, res) {
+  mongoose.model('post').findById(req.id, function(err, post) {
+    if(err) {
+      return console.error(err);
+    } else {
+      //remove post from database
+      post.remove(function(err, post) {
+        if(err) {
+          return console.error(err);
+        } else {
+          res.json({message: 'deleted',
+                    post: post});
+        }
+      });
+    }
+  });
+});
+
 module.exports = router;
