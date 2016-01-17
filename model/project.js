@@ -18,4 +18,4 @@ var projectSchema = new mongoose.Schema({
   }
 })
 
-mongoose.model('project', postSchema);
+mongoose.model('project', projectSchema);
